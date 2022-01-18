@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'home.dart';
+
 void main() {
   runApp(const GuessApp());
 }
@@ -16,8 +18,18 @@ class _GuessAppState extends State<GuessApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          title: const Center(
+            child: Text(
+              'Guess The Player',
+              style: TextStyle(
+                fontSize: 20.0,
+              ),
+            ),
+          ),
+        ),
         backgroundColor: Colors.blue,
-        body: SafeArea(
+        body: const SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
             child: Homepage(),
@@ -25,121 +37,5 @@ class _GuessAppState extends State<GuessApp> {
         ),
       ),
     );
-  }
-}
-
-class Homepage extends StatefulWidget {
-  int counter = 1;
-  int score = 0;
-
-  List<String> playernNames = [
-    'M.S. Dhoni',
-    'Chris Gayle',
-    'Virendra Sehwag',
-    'Virat Kholi',
-    'Sachin Tendulkar'
-  ];
-
-  void checkAnswer(String player) {
-    if (player == playernNames[counter])
-      score++;
-    else
-      score--;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: [
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image(
-                image: AssetImage('assets/picture$counter.png'),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Center(
-              child: Text(
-                'Your Score : $score',
-                style: TextStyle(
-                  fontSize: 30.0,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    checkAnswer(playernNames[counter]);
-                  },
-                  child: Text(
-                    playernNames[counter],
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      color: Colors.white,
-                      backgroundColor: Colors.green,
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    playernNames[counter],
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      color: Colors.white,
-                      backgroundColor: Colors.green,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    playernNames[counter],
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      color: Colors.white,
-                      backgroundColor: Colors.green,
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    playernNames[counter],
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      color: Colors.white,
-                      backgroundColor: Colors.green,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }
